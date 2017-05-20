@@ -1,1 +1,3 @@
-(go|jump|skip) (?P<nrOfSongs>\w+) (for work|songs for work|fort worth|songs fort worth|forward|songs forward|backward|songs backward|backwards|songs backwards|back|songs back)
+(calc|calculate|divide|multiplie|square of) (?P<firstNr>\w+) (\+|\-|plus|minus|with) (?P<secondNr>\w+)
+(square of) (?P<firstNr>\w+)
+(1,|1\.) (pi|phi)

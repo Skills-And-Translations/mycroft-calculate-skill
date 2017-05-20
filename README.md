@@ -1,73 +1,52 @@
-# mycroft-clementine-player-plasma-skill
-This skill integrates clementine Music Player with Mycroft which enables users to Play Local Music.
+# mycroft-calculate-skill
+This skill is very in a beginn! Joining welcomed.
 
-It is forked by the mycroft-amarok-player-plasma-skill and works in a similiar way.
+The sense of this skill is the following: At the moment, when you ask "whats 1 + 1", the wolfram alpha-search-engine will give you kind of fallback-response.
 
-It could be that the plugin make conflicts with the amarok-one cause of same commands, so you propaply have to deceide what skill you want to need.
+Calculating math's is no problem for python, so why not doing this stuff on mycroft's cpu itself?
 
-The clementine-project is also for exploring the mechanisms and libs of mycroft personaly, so i also want to extend it. Ideas are welcome.
+Should
+
+- save response-time
+- allow offline query (due to speech to text, for the only real offline-scenario you have to chat)
 
 #### Installation of skill:
 * Download or Clone Git
 * Create /opt/mycroft/skills folder if it does not exist
-* Extract Downloaded Skill into a folder. "mycroft-clementine-player-plasma-skill". (Clone does not require this step)
-* Copy the mycroft-internals-plasma-skill folder to /opt/mycroft/skills/ folder
+* Copy the mycroft-calculate-skill folder to /opt/mycroft/skills/ folder
 
-#### Installation of requirements:
-##### Fedora: 
-- sudo dnf install dbus-python
-- sudo dnf install python-psutil
-- From terminal: cp -R /usr/lib64/python2.7/site-packages/dbus* /home/$USER/.virtualenvs/mycroft/lib/python2.7/site-packages/
-- From terminal: cp /usr/lib64/python2.7/site-packages/_dbus* /home/$USER/.virtualenvs/mycroft/lib/python2.7/site-packages/
-
-##### Kubuntu / KDE Neon: 
-- sudo apt install python-psutil
-- sudo apt install python-dbus
-- From terminal: cp -R /usr/lib/python2.7/dist-packages/dbus* /home/$USER/.virtualenvs/mycroft/lib/python2.7/site-packages/
-- From terminal: cp /usr/lib/python2.7/dist-packages/_dbus* /home/$USER/.virtualenvs/mycroft/lib/python2.7/site-packages/
-
-* For other distributions:
-- Python Dbus and Python Psutil package is required and copying the Python Dbus folder and lib from your system python install over to /home/$USER/.virtualenvs/mycroft/lib/python2.7/site-packages/.
 
 ##### How To Use: 
-###### Play Music/Song
-- "Hey Mycroft, play music"
-- "Hey Mycroft, play song"
+###### Plus and minus
+- "Hey Mycroft, calc 1 + 1"
+- "Hey Mycroft, calculate 3 - 5"
 
-###### Pause Music/Song
-- "Hey Mycroft, pause music"
-- "Hey Mycroft, pause song"
+###### divide
+- "Hey Mycroft, divide 3 with 3"
+- "Hey Mycroft, divide 9 through 2"
 
-###### Stop Music/Song
-- "Hey Mycroft, stop music"
-- "Hey Mycroft, stop song"
+###### constants
+- "Hey Mycroft, what is pi"
+- "Hey Mycroft, whats pi"
 
-###### Next Song
-- "Hey Mycroft, next song"
-
-###### Previous Song
-- "Hey Mycroft, previous song"
-
-###### Jump forward
-- "Hey Mycroft, jump 3 songs forward"
-- "Hey Mycroft, go 8 forward"
-
-###### Jump backward
-- "Hey Mycroft, jump 10 songs back"
-- "Hey Mycroft, go 4 backward"
-- "Hey Mycroft, go 22 back"
+###### functions
+- "Hey Mycroft, square of 3"
+- "Hey Mycroft, square of 9"
 
 ## Current state
 
 Working features:
-* Play Music
-* Pause Music
-* Stop Music
-* Next Song
-* Previous Song
+* Plus and minus
+* divide
+* constants
+* functions
 
 Known issues:
 * None
 
 TODO:
-* None
+* add more constants than pi and make more accurate (atm, lot is testing)
+* add more functions, not only "square of"
+* add multiplie-command
+* a very cool thing would be to make infinite calculations like "hey mycroft, calculate 3 + 2 divided by 7 - 99 .... " (and so on) - no idea about this yet.
+* etc
