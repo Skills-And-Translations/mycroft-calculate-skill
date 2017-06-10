@@ -4,7 +4,6 @@ import dbus
 import glib
 import os
 import math
-import psutil
 from traceback import print_exc
 from os.path import dirname
 from adapt.intent import IntentBuilder
@@ -29,7 +28,7 @@ class CalculateSkill(MycroftSkill):
     def initialize(self):
         self.load_data_files(dirname(__file__))
 
-        
+        self.language = self.config_core.get('lang')[0:2]
         internals_plus_intent = IntentBuilder("CalculatePlusIntent").\
             require("CalculateKeyword").require("firstNr").require("PlusKeyword").require("secondNr").build()
         self.register_intent(internals_plus_intent, self.handle_internals_plus_intent)
@@ -53,13 +52,19 @@ class CalculateSkill(MycroftSkill):
 
 
     def handle_internals_pi_intent(self, message):
-        self.speak("Pi is 3.1415")
+        if self.language=="de":
+            self.speak("Pi ist 3.1415")
+        else:
+            self.speak("Pi is 3.1415")
 
     def handle_internals_squareof_intent(self, message):
         firstNr = message.data.get("firstNr")
         try:
             pFirstNr = int(firstNr)
-            self.speak("square of "+firstNr+" is "+str(math.sqrt(pFirstNr)))
+            if self.language=="de":
+                self.speak("die wurzel von "+firstNr+" ist "+str(math.sqrt(pFirstNr)))
+            else:
+                self.speak("square of "+firstNr+" is "+str(math.sqrt(pFirstNr)))
         except ValueError:
             self.speak("sorry, was not able to resolve the task. please use your calculator")
 
@@ -70,7 +75,10 @@ class CalculateSkill(MycroftSkill):
         try:
             pFirstNr = float(firstNr)
             pSecondNr = float(secondNr)
-            self.speak(firstNr+ " divided with "+secondNr+" is "+str(pFirstNr/pSecondNr))
+            if self.language=="de":
+                self.speak(firstNr+ " geteilt durch "+secondNr+" ergibt "+str(pFirstNr/pSecondNr))
+            else:
+                self.speak(firstNr+ " divided with "+secondNr+" is "+str(pFirstNr/pSecondNr))
         except ValueError:
             self.speak("sorry, was not able to resolve the task. please use your calculator")
         
@@ -80,7 +88,10 @@ class CalculateSkill(MycroftSkill):
         try:
             pFirstNr = int(firstNr)
             pSecondNr = int(secondNr)
-            self.speak(firstNr+ " plus "+secondNr+" is "+str(pFirstNr+pSecondNr))
+            if self.language=="de":
+                self.speak(firstNr+ " plus "+secondNr+" ist "+str(pFirstNr+pSecondNr))
+            else:
+                self.speak(firstNr+ " plus "+secondNr+" is "+str(pFirstNr+pSecondNr))
         except ValueError:
             self.speak("sorry, was not able to resolve the task. please use your calculator")
  
@@ -91,7 +102,10 @@ class CalculateSkill(MycroftSkill):
         try:
             pFirstNr = int(firstNr)
             pSecondNr = int(secondNr)
-            self.speak(firstNr+ " minus "+secondNr+" is "+str(pFirstNr-pSecondNr))
+            if self.language=="de":
+                self.speak(firstNr+ " minus "+secondNr+" ist "+str(pFirstNr-pSecondNr))
+            else:
+                self.speak(firstNr+ " minus "+secondNr+" is "+str(pFirstNr-pSecondNr))
         except ValueError:
             self.speak("sorry, was not able to resolve the task. please use your calculator")
             
