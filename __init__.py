@@ -1,7 +1,5 @@
 from __future__ import division
 import sys
-import dbus
-import glib
 import os
 import math
 from traceback import print_exc
